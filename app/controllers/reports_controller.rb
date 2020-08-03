@@ -1,9 +1,10 @@
 class ReportsController < ApplicationController
   def index
     @coupon_names = Coupons::CouponNames.new.call
-    @coupons = Reports::CouponList.new(permitted_params).call
+    coupons = Reports::CouponList.new(permitted_params).call
+    @paginated_coupons = Paginations::SimplePagination.new(coupons, params[:page])
 
-    @products = Reports::PaginatedSalesList.new(permitted_params).call
+    @paginated_products = Reports::PaginatedSalesList.new(permitted_params).call
   end
 
   private

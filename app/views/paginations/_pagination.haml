@@ -1,0 +1,6 @@
+%p
+  %span Total records:
+  = paginated_records.records.count
+
+- paginated_records.pages.each do |number|
+  = link_to number, reports_path(params.permit(:page, :completed_at_start, :completed_at_end).merge(page: number))
