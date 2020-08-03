@@ -8,6 +8,12 @@ class OrdersController < ApplicationController
   def show
   end
 
+  def cancel
+    find_order!
+    @order.update!(state: Order::CANCELED)
+    redirect_to orders_path
+  end
+
   private
 
   def find_order!
