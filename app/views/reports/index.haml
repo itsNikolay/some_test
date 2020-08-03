@@ -14,7 +14,8 @@
         %th Applied emails
     %tbody
       - @coupons.each do |coupon|
-        - orders = coupon.order_items.map(&:order)
+        - p orders = coupon.order_items.map(&:order)
+        - p orders.map(&:user)
         %tr
           %td= coupon.name
           %td= coupon.amount
@@ -37,8 +38,9 @@
         %th Name
         %th Revenue in Payments
     %tbody
-      - @products.each do |(id, name), sum|
+      - @products.each do |id, name, sum, count|
         %tr
           %td= id
           %td= name
           %td= sum
+          %td= count

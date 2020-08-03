@@ -3,7 +3,7 @@
 one:
   order_id: 1
   amount: 9.99
-  state: MyString
+  state: 'completed'
   completed_at: 2020-06-01 12:18:58
   refunded_at: 2020-06-01 12:18:58
   payment_type: "CreditCard"
@@ -11,7 +11,7 @@ one:
 two:
   order_id: 2
   amount: 9.99
-  state: MyString
+  state: 'completed'
   completed_at: 2020-06-01 12:18:58
   refunded_at: 2020-06-01 12:18:58
   payment_type: "CreditCard"
@@ -19,7 +19,15 @@ two:
 arrived_order_payment:
   order_id: 2
   amount: 9.99
-  state: MyString
+  state: 'completed'
+  completed_at: 2020-06-01 12:18:58
+  refunded_at: 2020-06-01 12:18:58
+  payment_type: "CreditCard"
+
+refunded_payment:
+  order_id: 2
+  amount: 9.99
+  state: 'refunded'
   completed_at: 2020-06-01 12:18:58
   refunded_at: 2020-06-01 12:18:58
   payment_type: "CreditCard"

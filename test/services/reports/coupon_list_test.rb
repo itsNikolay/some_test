@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'faker'
 
 module Reports
   class CouponListTest < ActiveSupport::TestCase

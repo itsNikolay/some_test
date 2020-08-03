@@ -10,6 +10,7 @@ module Reports
 
     def call
       @payments = Payment
+                  .distinct
                   .completed
                   .joins(order: [order_items: :product])
 
@@ -18,7 +19,7 @@ module Reports
 
       @payments
         .group('products.id', 'products.name')
-        .sum('payments.amount')
+        .pluck('products.id', 'products.name', 'SUM(payments.amount)', 'COUNT(*)')
     end
 
     private

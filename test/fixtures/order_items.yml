@@ -6,3 +6,31 @@ coupon_order_item:
   order_id: 1
   source_id: 1
   source_type: 'Coupon'
+
+product_one_order_item:
+  quantity: 1
+  price: 9.99
+  order_id: 1
+  source_id: 1
+  source_type: 'Product'
+
+product_one_order_item2:
+  quantity: 1
+  price: 9.99
+  order_id: 2
+  source_id: 1
+  source_type: 'Product'
+
+product_two_order_item:
+  quantity: 1
+  price: 9.99
+  order_id: 2
+  source_id: 2
+  source_type: 'Product'
+
+product_two_order_item:
+  quantity: 1
+  price: 9.99
+  order_id: 2
+  source_id: 2
+  source_type: 'Product'

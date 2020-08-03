@@ -10,7 +10,7 @@ module Reports
 
     def call
       initialize_coupons
-      by_name
+      select_by_name
       @coupons.includes(order_items: { order: :user })
     end
 
@@ -23,7 +23,7 @@ module Reports
         .left_joins(order_items: { order: :user })
     end
 
-    def by_name
+    def select_by_name
       return if name.blank?
 
       @coupons = coupons.where(name: name)
