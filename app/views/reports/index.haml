@@ -1,0 +1,22 @@
+%h2 Coupons
+
+= form_with url: reports_path, method: :get do |form|
+  %b Name
+  = select_tag :name, options_for_select(@coupon_names, params[:name])
+  = form.submit 'Search'
+
+  %table.table
+    %thead
+      %tr
+        %th Name
+        %th Amount
+        %th Revenue In Orders
+        %th Applied emails
+    %tbody
+      - @coupons.each do |coupon|
+        - orders = coupon.order_items.map(&:order)
+        %tr
+          %td= coupon.name
+          %td= coupon.amount
+          %td= Revenue::OrdersRevenue.new(orders).call
+          %td= orders.map(&:user).map(&:email)
