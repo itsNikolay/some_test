@@ -22,7 +22,7 @@
           %td= Revenue::OrdersRevenue.new(orders).call
           %td= orders.map(&:user).map(&:email).join(', ')
 
-  = render partial: 'paginations/pagination', locals: { paginated_records: @paginated_coupons }
+  = render partial: 'paginations/pagination', locals: { paginated_records: @paginated_coupons, redirect_method: method(:reports_path) }
 
 %hr
 
@@ -50,4 +50,4 @@
           %td= sum_price
           %td= total_quanity
 
-  = render partial: 'paginations/pagination', locals: { paginated_records: @paginated_products }
+  = render partial: 'paginations/pagination', locals: { paginated_records: @paginated_products, redirect_method: method(:reports_path) }

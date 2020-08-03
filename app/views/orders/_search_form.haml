@@ -1,0 +1,5 @@
+= form_with url: orders_path, method: :get do |form|
+  %b Number
+  = form.text_field :number, value: params[:number]
+  = form.submit 'Search'
+  - yield

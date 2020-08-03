@@ -1,29 +1,26 @@
 %h2 Search Order
 
-= form_with url: orders_path, method: :get do |form|
-  %b Number
-  = form.text_field :number, value: params[:number]
-  = form.submit 'Search'
+= render 'search_form'
 
-  %h2 Order List
+%h2 Order List
 
-  %table.table
-    %thead
+%table.table
+  %thead
+    %tr
+      %th Number
+      %th State
+      %th User Email
+      %th User Name
+      %th Actions
+  %tbody
+    - @paged_orders.paged_records.each do |order|
       %tr
-        %th Number
-        %th State
-        %th User Email
-        %th User Name
-        %th Actions
-    %tbody
-      - @paged_orders.paged_records.each do |order|
-        %tr
-          %td= order.number
-          %td= order.state
-          %td= order.user.email
-          %td= order.user.name
-          %td
-            - unless order.state == Order::CANCELED
-              = link_to 'Cancel Order', cancel_order_path(order), method: :post
+        %td= order.number
+        %td= order.state
+        %td= order.user.email
+        %td= order.user.name
+        %td
+          - unless order.state == Order::CANCELED
+            = link_to 'Cancel Order', cancel_order_path(order), method: :post
 
-  = render partial: 'paginations/pagination', locals: { paginated_records: @paged_orders }
+= render partial: 'paginations/pagination', locals: { paginated_records: @paged_orders, redirect_method: method(:orders_path) }
