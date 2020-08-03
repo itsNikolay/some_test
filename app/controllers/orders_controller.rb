@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
 
   def cancel
     find_order!
-    @order.update!(state: Order::CANCELED)
+    Orders::CancelOrder.new(@order).call
     redirect_to orders_path
   end
 
