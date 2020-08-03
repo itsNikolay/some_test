@@ -9,3 +9,9 @@ payments = Payment.all.select(:order_id)
 Product.distinct.all.joins(order_items: :order).where(order_items: { orders: { id: payments } })
 
 Reports::ProductSalesList.new.call
+0..3.to_a
+
+
+OrderItem.first.product
+Payment.all.joins(order: :order_items)
+Payment.completed.all.joins(order: [order_items: :product]).group('products.id', 'products.name').sum('payments.amount')
