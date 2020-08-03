@@ -9,11 +9,9 @@ module Reports
 
     def call
       Product
-        .joins(:order_items)
         .where(order_items: { state: OrderItem::SOLD })
-        .where(order_items: { order_id: payments.select('payments.order_id') })
-        .group('1', '2')
-        .pluck('products.id', 'products.name', 'SUM(order_items.price)', 'COUNT(order_items.quantity)')
+        .joins(order_items: [:product, order: :payments])
+        .where(order_items: { orders: { payments: payments.select(:id) } })
     end
   end
 end
