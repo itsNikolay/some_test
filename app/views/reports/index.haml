@@ -19,7 +19,7 @@
           %td= coupon.name
           %td= coupon.amount
           %td= Revenue::OrdersRevenue.new(orders).call
-          %td= orders.map(&:user).map(&:email)
+          %td= orders.map(&:user).map(&:email).join(', ')
 
 %h2 Product Sales
 
