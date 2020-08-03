@@ -34,13 +34,14 @@
   %table.table
     %thead
       %tr
-        %th Id
-        %th Name
-        %th Revenue in Payments
+        %th Produce Id
+        %th Product Name
+        %th Total Price Amount
+        %th Total Sold Quantity
     %tbody
-      - @products.each do |id, name, sum, count|
+      - @products.each do |id, name, sum_price, total_quanity|
         %tr
           %td= id
           %td= name
-          %td= sum
-          %td= count
+          %td= sum_price
+          %td= total_quanity

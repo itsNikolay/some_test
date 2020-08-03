@@ -3,8 +3,7 @@ class OrdersController < ApplicationController
 
   def index
     orders = Orders::OrderList.new(permitted_params).call
-    @paged_orders = Paginations::SimplePagination.new(orders, params[:page]).call
-    @orders = @paged_orders[:records]
+    @paged_orders = Paginations::SimplePagination.new(orders, params[:page])
   end
 
   def show

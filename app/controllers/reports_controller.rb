@@ -1,9 +1,10 @@
 class ReportsController < ApplicationController
   def index
-    @coupon_names = [''].concat(Coupon.pluck(:name))
+    @coupon_names = Coupons::CouponNames.new.call
     @coupons = Reports::CouponList.new(permitted_params).call
-    # @products = Reports::ProductSalesList.new(permitted_params).call
-    @products = Reports::NewSalesList.new(permitted_params).call
+
+    payments = Payments::PaymentsList.new(permitted_params).call
+    @products = Reports::NewSalesList.new(payments, permitted_params).call
   end
 
   private

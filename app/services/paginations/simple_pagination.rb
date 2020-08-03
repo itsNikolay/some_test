@@ -10,23 +10,12 @@ module Paginations
       @page = page.to_i
     end
 
-    def call
-      {
-        records: paged_records,
-        total_pages: total_pages,
-        page: page,
-        pages: pages
-      }
+    def paged_records
+      records.offset(page * PER_PAGE).limit(PER_PAGE)
     end
-
-    private
 
     def pages
       Array(0..total_pages)
-    end
-
-    def paged_records
-      records.offset(page * PER_PAGE).limit(PER_PAGE)
     end
 
     def total_pages

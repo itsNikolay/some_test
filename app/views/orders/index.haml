@@ -16,7 +16,7 @@
         %th User Name
         %th Actions
     %tbody
-      - @orders.each do |order|
+      - @paged_orders.paged_records.each do |order|
         %tr
           %td= order.number
           %td= order.state
@@ -26,5 +26,5 @@
             - unless order.state == Order::CANCELED
               = link_to 'Cancel Order', cancel_order_path(order), method: :post
 
-  - @paged_orders[:pages].each do |number|
+  - @paged_orders.pages.each do |number|
     = link_to number, orders_path(params.permit(:page, :number).merge(page: number))
