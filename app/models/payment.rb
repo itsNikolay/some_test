@@ -17,4 +17,8 @@ class Payment < ApplicationRecord
               }
 
   belongs_to :order
+
+  scope :by_completed_at_gteq, ->(date) { where(arel_table[:completed_at].gteq(date)) }
+  scope :by_completed_at_lt, ->(date) { where(arel_table[:completed_at].lt(date)) }
+  scope :completed, -> { where(state: COMPLETED) }
 end

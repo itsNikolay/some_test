@@ -11,7 +11,7 @@ module Reports
     def call
       initialize_coupons
       by_name
-      @coupons
+      @coupons.includes(order_items: { order: :user })
     end
 
     private

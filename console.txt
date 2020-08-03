@@ -1,0 +1,11 @@
+OrderItem.first
+OrderItem.where(source_type: 'Product').joins(:order)
+
+Product.distinct.all.joins(order_items: :order).pluck(:order_id)
+Payment.all.pluck(:order_id)
+
+
+payments = Payment.all.select(:order_id)
+Product.distinct.all.joins(order_items: :order).where(order_items: { orders: { id: payments } })
+
+Reports::ProductSalesList.new.call

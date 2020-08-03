@@ -20,3 +20,25 @@
           %td= coupon.amount
           %td= Revenue::OrdersRevenue.new(orders).call
           %td= orders.map(&:user).map(&:email)
+
+%h2 Product Sales
+
+= form_with url: reports_path, method: :get do |form|
+  %b Start
+  = form.datetime_field :completed_at_start, value: params[:completed_at_start]
+  %b End
+  = form.datetime_field :completed_at_end, value: params[:completed_at_end]
+  = form.submit 'Search'
+
+  %table.table
+    %thead
+      %tr
+        %th Id
+        %th Name
+        %th Revenue in Payments
+    %tbody
+      - @products.each do |product, amount|
+        %tr
+          %td= product.id
+          %td= product.name
+          %td= amount
