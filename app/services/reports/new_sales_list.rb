@@ -1,7 +1,7 @@
 module Reports
-  # Reports::SalesList
-  class SalesList
-    attr_reader :payments, :completed_at_start, :completed_at_end
+  # Reports::NewSalesList
+  class NewSalesList
+    attr_reader :payments, :completed_at_end, :completed_at_start
 
     def initialize(params = {})
       @completed_at_start = params[:completed_at_start]
@@ -9,12 +9,16 @@ module Reports
     end
 
     def call
-      @payments = Payment.distinct.completed
+      @payments = Payment
+        .completed
+        .joins(order: [order_items: :product])
 
       by_completed_at_start
       by_completed_at_end
 
       @payments
+        .group('products.id', 'products.name')
+        .sum('payments.amount')
     end
 
     private

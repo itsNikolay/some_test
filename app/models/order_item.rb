@@ -22,4 +22,5 @@ class OrderItem < ApplicationRecord
   belongs_to :order
   belongs_to :source,
              polymorphic: true
+  belongs_to :product, class_name: 'Product', foreign_type: :source_type, foreign_key: 'source_id'
 end
