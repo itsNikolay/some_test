@@ -1,15 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user: 
+john_address:
+  id: 1
+  user: john
   address1: MyString
   address2: MyString
   city: MyString
   zipcode: MyString
   state: MyString
 
-two:
-  user: 
+jane_address:
+  id: 2
+  user: jane
   address1: MyString
   address2: MyString
   city: MyString

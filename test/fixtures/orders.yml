@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+cancelled_order:
+  id: 1
+  user_id: 2
+  address_id: 2
+  state: 'cancelled'
+  number: '123'
+  total: 9.99
+  building_at: 2020-06-01 12:18:20
+  canceled_at: 2020-06-01 12:18:20
+  arrived_at: 2020-06-01 12:18:20
+
+arrived_order:
+  id: 2
+  user_id: 2
+  address_id: 2
+  state: 'arrived'
+  number: '234'
+  total: 9.99
+  building_at: 2020-06-01 12:18:20
+  canceled_at: 2020-06-01 12:18:20
+  arrived_at: 2020-06-01 12:18:20
+
+building_order:
+  id: 3
+  user_id: 2
+  address_id: 2
+  state: 'building'
+  number: '345'
+  total: 9.99
+  building_at: 2020-06-01 12:18:20
+  canceled_at: 2020-06-01 12:18:20
+  arrived_at: 2020-06-01 12:18:20

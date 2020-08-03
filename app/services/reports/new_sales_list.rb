@@ -10,8 +10,8 @@ module Reports
 
     def call
       @payments = Payment
-        .completed
-        .joins(order: [order_items: :product])
+                  .completed
+                  .joins(order: [order_items: :product])
 
       by_completed_at_start
       by_completed_at_end
