@@ -1,0 +1,25 @@
+%h2 Search Order
+
+= form_with url: orders_path, method: :get do |form|
+  %b Number
+  = form.text_field :number, value: params[:number]
+  = form.submit 'Search'
+
+  %h2 Order List
+
+  %table.table
+    %thead
+      %tr
+        %th Number
+        %th State
+        %th User Email
+        %th User Name
+    %tbody
+      - @orders.each do |order|
+        %tr
+          %td= order.number
+          %td= order.state
+          %td= order.user.email
+          %td= order.user.name
+
+  -# = form.text_field :page, value: params[:page]

@@ -19,6 +19,10 @@ class Order < ApplicationRecord
   has_many :order_items
   has_many :payments
 
+  scope :by_number, ->(number) { where(number: number) }
+  scope :by_state, ->(state) { where(state: state) }
+  scope :by_page, ->(page, per_page) { offset(page * per_page).limit(per_page) }
+
   def to_param
     number
   end
