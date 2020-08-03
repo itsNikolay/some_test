@@ -1,6 +1,6 @@
 module Reports
-  # Reports::NewSalesList
-  class NewSalesList
+  # Reports::SalesList
+  class SalesList
     attr_reader :payments
 
     def initialize(payments, _params = {})

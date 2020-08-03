@@ -27,7 +27,7 @@ module Reports
     end
 
     def products
-      Reports::NewSalesList.new(payments, params).call
+      Reports::SalesList.new(payments, params).call
     end
   end
 end
