@@ -24,15 +24,6 @@ module Orders
       assert_equal orders.map(&:id), [order.id]
     end
 
-    test 'by_page' do
-      user = create_user
-      address = create_address(user)
-      20.times { create_order(user, address) }
-
-      orders = Orders::OrderList.new(page: 1).call
-      assert_equal orders.size, Orders::OrderList::PER_PAGE
-    end
-
     private
 
     def create_user
