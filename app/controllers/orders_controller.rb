@@ -2,7 +2,9 @@ class OrdersController < ApplicationController
   before_action :find_order!, only: :show
 
   def index
-    @orders = Orders::OrderList.new(permitted_params).call
+    orders = Orders::OrderList.new(permitted_params).call
+    @paged_orders = Paginations::SimplePagination.new(orders, params[:page]).call
+    @orders = @paged_orders[:records]
   end
 
   def show
