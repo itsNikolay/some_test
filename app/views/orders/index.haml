@@ -21,6 +21,10 @@
         %td= order.user.name
         %td
           - unless order.state == Order::CANCELED
-            = link_to 'Cancel Order', cancel_order_path(order), method: :post
+            = link_to 'Cancel Order',
+              cancel_order_path(order),
+              method: :post,
+              class: 'btn btn-danger',
+              data: { confirm: 'Cancel order?' }
 
 = render partial: 'paginations/pagination', locals: { paginated_records: @paged_orders, redirect_method: method(:orders_path) }
