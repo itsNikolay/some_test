@@ -1,3 +1,6 @@
+- if flash[:notice]
+  %p.alert-success= flash[:notice]
+
 %h2 Search Order
 
 = render 'search_form'

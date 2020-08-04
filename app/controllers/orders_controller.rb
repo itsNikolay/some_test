@@ -6,12 +6,12 @@ class OrdersController < ApplicationController
     @paged_orders = Paginations::SimplePagination.new(orders, params[:page])
   end
 
-  def show
-  end
+  def show; end
 
   def cancel
     find_order!
     Orders::CancelOrder.new(@order).call
+    flash[:notice] = "Order #{@order.number} has cancelled"
     redirect_to orders_path
   end
 
