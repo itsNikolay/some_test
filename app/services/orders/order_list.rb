@@ -20,7 +20,7 @@ module Orders
     def by_number
       return if number.blank?
 
-      @orders = orders.by_number(number)
+      @orders = orders.by_like_number(number)
     end
   end
 end

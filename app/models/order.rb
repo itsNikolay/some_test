@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
-  BUILDING = "building"
-  ARRIVED = "arrived"
-  CANCELED = "canceled"
+  BUILDING = 'building'.freeze
+  ARRIVED = 'arrived'.freeze
+  CANCELED = 'canceled'.freeze
   STATES = [BUILDING, ARRIVED, CANCELED].freeze
 
   validates_presence_of :user_id, :state
@@ -21,6 +21,10 @@ class Order < ApplicationRecord
 
   scope :by_number, ->(number) { where(number: number) }
   scope :by_state, ->(state) { where(state: state) }
+  scope :by_like_number, lambda { |number|
+    sanitized_name = ActiveRecord::Base.sanitize_sql_like(number)
+    where('orders.number LIKE ?', "%#{sanitized_name}%")
+  }
 
   def to_param
     number
