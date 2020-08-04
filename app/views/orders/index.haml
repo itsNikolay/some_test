@@ -23,6 +23,7 @@
         %td= order.user.email
         %td= order.user.name
         %td
+          = link_to 'Details', order, class: 'btn btn-primary'
           - unless order.state == Order::CANCELED
             = link_to 'Cancel Order',
               cancel_order_path(order),

@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :find_order!, only: :show
+  before_action :find_order!, only: %i[show cancel]
 
   def index
     orders = Orders::OrderList.new(permitted_params).call
@@ -9,7 +9,6 @@ class OrdersController < ApplicationController
   def show; end
 
   def cancel
-    find_order!
     Orders::CancelOrder.new(@order).call
     flash[:notice] = "Order #{@order.number} has cancelled"
     redirect_to orders_path

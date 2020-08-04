@@ -1,0 +1,5 @@
+%ul
+  - attributes.each do |attribute|
+    %li
+      %b #{attribute.to_s.humanize}:
+      #{record.public_send(attribute)}

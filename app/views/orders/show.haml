@@ -1,0 +1,36 @@
+%h1 Order #{@order.number}
+
+= link_to 'Back', orders_path, class: 'btn btn-primary'
+
+%h2 Details
+
+= render partial: 'list',
+  locals: { record: @order,
+  attributes: %i[number state total building_at canceled_at arrived_at created_at updated_at] }
+
+%h2 Address
+
+= render partial: 'list',
+  locals: { record: @order.address,
+  attributes: %i[address1 address2 city zipcode state created_at updated_at] }
+
+%h2 User
+
+= render partial: 'list',
+  locals: { record: @order.user,
+            attributes: %i[name email created_at updated_at] }
+
+
+%h2 Order Items
+
+- @order.order_items.each do |order_item|
+  = render partial: 'list',
+    locals: { record: order_item,
+              attributes: %i[quantity price state order_id source_type source_id created_at updated_at] }
+
+%h2 Payments
+
+- @order.payments.each do |payment|
+  = render partial: 'list',
+    locals: { record: payment,
+              attributes: %i[amount state completed_at refunded_at payment_type created_at updated_at] }
