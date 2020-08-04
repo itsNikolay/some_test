@@ -11,11 +11,13 @@ module Reports
       paginated_products = Paginations::SimplePagination.new(products, params[:page])
       paginated_products.paged_records do |records|
         records
-          .group('1', '2')
+          .group('1', '2', '3')
           .pluck('products.id',
                  'products.name',
-                 'SUM(order_items.price * order_items.quantity)',
-                 'COUNT(order_items.quantity)')
+                 'order_items.price',
+                 'COUNT(*)',
+                 'order_items.quantity',
+                 'SUM(order_items.price * order_items.quantity)')
       end
       paginated_products
     end

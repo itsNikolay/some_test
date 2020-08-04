@@ -40,14 +40,18 @@
       %tr
         %th Produce Id
         %th Product Name
-        %th Total Price Amount
-        %th Total Sold Quantity
+        %th Price
+        %th Orders
+        %th Quantity
+        %th Revenue (Price * Orders * Quantity)
     %tbody
-      - @paginated_products.paged_records.each do |id, name, sum_price, total_quanity|
+      - @paginated_products.paged_records.each do |id, name, price, orders, quanity, sum_price|
         %tr
           %td= id
           %td= name
+          %td= price
+          %td= orders
+          %td= quanity
           %td= sum_price
-          %td= total_quanity
 
   = render partial: 'paginations/pagination', locals: { paginated_records: @paginated_products, redirect_method: method(:reports_path) }
