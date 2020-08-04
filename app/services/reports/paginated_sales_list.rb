@@ -15,9 +15,9 @@ module Reports
           .pluck('products.id',
                  'products.name',
                  'order_items.price',
-                 'COUNT(*)',
+                 Arel.sql('COUNT(*)'),
                  'order_items.quantity',
-                 'SUM(order_items.price * order_items.quantity)')
+                 Arel.sql('SUM(order_items.price * order_items.quantity)'))
       end
       paginated_products
     end
