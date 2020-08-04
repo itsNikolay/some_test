@@ -1,6 +1,6 @@
 %h2 Coupon Users
 
-= form_with url: reports_path, method: :get do |form|
+= form_with url: reports_path, method: :get, data: { remote: false } do |form|
   %b Name
   = select_tag :name, options_for_select(@coupon_names, params[:name])
   = form.submit 'Search'
@@ -28,7 +28,7 @@
 
 %h2 Product Sales
 
-= form_with url: reports_path, method: :get do |form|
+= form_with url: reports_path, method: :get, data: { remote: false } do |form|
   %b Start
   = form.datetime_field :completed_at_start, value: params[:completed_at_start]
   %b End
